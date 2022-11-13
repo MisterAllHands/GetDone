@@ -6,7 +6,6 @@ class  TodoViewController: SwipeTableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
     var toDoItems: Results<Item>?
     let realm = try! Realm()
     var selectedCategory: Category? {
@@ -19,6 +18,7 @@ class  TodoViewController: SwipeTableViewController {
         super.viewDidLoad()
         statusBarColorChange(colour: HexColor(selectedCategory!.colour)!)
         tableView.separatorStyle = .none
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +35,7 @@ class  TodoViewController: SwipeTableViewController {
                 navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
                 searchBar.textField?.textColor = .white
                 searchBar.barTintColor = navBarColor
-                searchBar.setLeftImage(UIImage(systemName: "powersleep")!, tintColor: .flatWhite())
+                searchBar.setLeftImage(UIImage(systemName: "powersleep")!, tintColor: navBarColor)
             }
         }
     }
@@ -43,6 +43,7 @@ class  TodoViewController: SwipeTableViewController {
     //Changing searchBar placeholder
     override func viewDidAppear(_ animated: Bool) {
         searchBar.changePlaceholderColor(.white)
+
     }
     //MARK: - Tablevie Datasource Methods
     
@@ -163,12 +164,6 @@ class  TodoViewController: SwipeTableViewController {
 
 extension TodoViewController: UISearchBarDelegate{
 
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.setLeftImage(UIImage(systemName: "powersleep")!, tintColor: .flatBlue())
-        return true
-    }
-    
-
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         toDoItems = toDoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
         searchBar.isLoading = false
@@ -177,6 +172,7 @@ extension TodoViewController: UISearchBarDelegate{
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         searchBar.isLoading = true
         if searchBar.text?.count == 0 {
             loadItems()
