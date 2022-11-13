@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AW8-dk-nAF">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +11,7 @@
         <!--GetDone-->
         <scene sceneID="Z9e-Lc-akT">
             <objects>
-                <tableViewController id="Ti2-mg-ecN" customClass="CategoryViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ti2-mg-ecN" customClass="CategoryViewController" customModule="GetDone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="O5o-e8-bw1">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,6 +32,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="GetDone" id="NZI-n9-f5Y">
+                        <barButtonItem key="backBarButtonItem" title=" " id="A49-nn-TFF"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="acw-cl-KVR">
                             <connections>
                                 <action selector="addButtonPressed:" destination="Ti2-mg-ecN" id="Jei-YG-aOy"/>
@@ -45,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="2120" y="-9"/>
         </scene>
-        <!--TodoEye-->
+        <!--To-Do's-->
         <scene sceneID="AyD-5z-ptB">
             <objects>
-                <tableViewController id="HZx-Ck-69s" customClass="TodoViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="HZx-Ck-69s" customClass="TodoViewController" customModule="GetDone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="lIs-eR-0yD">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +79,7 @@
                             <outlet property="delegate" destination="HZx-Ck-69s" id="1Fw-k1-NNM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TodoEye" id="fNK-34-KQ4">
+                    <navigationItem key="navigationItem" title="To-Do's" id="fNK-34-KQ4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0M9-DJ-47f">
                             <connections>
                                 <action selector="addPressed:" destination="HZx-Ck-69s" id="U1g-ia-KCG"/>

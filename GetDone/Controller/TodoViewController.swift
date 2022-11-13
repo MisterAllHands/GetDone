@@ -30,9 +30,11 @@ class  TodoViewController: SwipeTableViewController {
             guard let navBar = navigationController?.navigationBar else {fatalError("Found nil while asigning naviationController")}
             
             if let navBarColor = UIColor(hexString: hexValue){
+    
                 navBar.backgroundColor = navBarColor
                 navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
                 navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
+
                 searchBar.textField?.textColor = .white
                 searchBar.barTintColor = navBarColor
                 searchBar.setLeftImage(UIImage(systemName: "powersleep")!, tintColor: navBarColor)
