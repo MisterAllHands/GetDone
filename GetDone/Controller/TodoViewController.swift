@@ -8,6 +8,7 @@ class  TodoViewController: SwipeTableViewController {
     
     var toDoItems: Results<Item>?
     let realm = try! Realm()
+    
     var selectedCategory: Category? {
         didSet {
             loadItems()
@@ -42,7 +43,7 @@ class  TodoViewController: SwipeTableViewController {
         }
     }
     
-    //Changing searchBar placeholder
+    //Changing searchBar placeholder color
     override func viewDidAppear(_ animated: Bool) {
         searchBar.changePlaceholderColor(.white)
 
@@ -58,6 +59,7 @@ class  TodoViewController: SwipeTableViewController {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let item = toDoItems?[indexPath.row] {
+            
             cell.textLabel?.text = item.title
             cell.accessoryType = item.done ? .checkmark : .none
             
@@ -77,6 +79,7 @@ class  TodoViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let item = toDoItems?[indexPath.row] {
+            
             do {
                 try realm.write{
                     item.done = !item.done
@@ -90,7 +93,7 @@ class  TodoViewController: SwipeTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
+    //Adding task to the list
     @IBAction func addPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
@@ -155,10 +158,8 @@ class  TodoViewController: SwipeTableViewController {
                 UIApplication.shared.keyWindow?.addSubview(statusBar)
 
         } else {
-
                 let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
                 statusBar?.backgroundColor = colour
-
         }
     }
 }

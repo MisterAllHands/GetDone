@@ -91,10 +91,15 @@ class CategoryViewController: SwipeTableViewController {
         let alert = UIAlertController(title: "Add a New Cateogry", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) {[self](action) in
             let newCategory = Category()
-            newCategory.name = textField.text!
-            newCategory.colour = UIColor.randomFlat().hexValue()
-            save(category: newCategory)
-        }
+            //Checking if textfield is empty or not
+            guard !(textField.text?.trimmingCharacters(in: .whitespaces).isEmpty)! else {return}
+                
+            //If it's not empty, we trigger the following code
+                newCategory.name = textField.text!
+                newCategory.colour = UIColor.randomFlat().hexValue()
+                save(category: newCategory)
+            }
+        
         
         alert.addAction(action)
         alert.addTextField { (field) in
@@ -127,10 +132,8 @@ class CategoryViewController: SwipeTableViewController {
                 UIApplication.shared.keyWindow?.addSubview(statusBar)
 
         } else {
-
                 let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
                 statusBar?.backgroundColor = colour
-
         }
     }
 }
